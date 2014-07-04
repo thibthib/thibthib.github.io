@@ -16,27 +16,20 @@ body {
 	left: ~'calc(33% - 100px)';
 	overflow: hidden;
 
-	img, &:before {
+	img {
 		border-radius: 50%;
 		opacity: 0;
+        visibility: hidden;
 		width: 168px;
 
 		transition: 1000ms 200ms;
 	}
 
-	&:before {
-		// content: '';
-		position: absolute;
-	}
-
 	&.photo {
 		img {
 			opacity: 1;
+            visibility: visible;
 		}
-	}
-
-	&.github:before {
-		// content: '';
 	}
 }
 
