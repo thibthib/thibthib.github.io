@@ -1,0 +1,89 @@
+*, *:before, *:after {
+  box-sizing: border-box;
+}
+
+body {
+	background: url(../images/Motif.svg);
+}
+
+.logo {
+	border-radius: 50%;
+	border: 16px solid #00bcd4;
+	height: 200px;
+	width: 200px;
+	position: absolute;
+	top: ~'calc(50% - 100px)';
+	left: ~'calc(33% - 100px)';
+	overflow: hidden;
+
+	img, &:before {
+		border-radius: 50%;
+		opacity: 0;
+		width: 168px;
+
+		transition: 1000ms 200ms;
+	}
+
+	&:before {
+		// content: '';
+		position: absolute;
+	}
+
+	&.photo {
+		img {
+			opacity: 1;
+		}
+	}
+
+	&.github:before {
+		// content: '';
+	}
+}
+
+.infos {
+	position: absolute;
+	left: 50%;
+	top: ~'calc(50% - 70px)';
+
+	.firstname, .lastname {
+		text-align: left;
+		font-size: 80px;
+		line-height: 70px;
+		font-family: 'Montserrat', sans-serif;
+		text-transform: uppercase;
+		color: #37474f;
+		cursor: default;
+	}
+
+	.firstname {
+		bottom: 50%;
+	}
+
+	.lastname {
+		top: 50%;
+	}
+}
+
+.links {
+	position: absolute;
+	left: 50%;
+	top: ~'calc(50% + 70px)';
+	padding: 20px;
+
+	.icon {
+		display: inline-block;
+		vertical-align: middle;
+		height: 48px;
+		width: 48px;
+		padding: 8px;
+		margin-right: 16px;
+		cursor: pointer;
+
+        transition: fill 500ms;
+        fill: #90a4ae;
+
+        &:hover {
+            fill: #00acc1;
+        }
+	}
+}
