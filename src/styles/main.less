@@ -6,6 +6,21 @@ body {
 	background: url(../images/motif.svg);
 }
 
+@keyframes inflate {
+    from {
+        top: ~'calc(50% - 76px)';
+        left: ~'calc(33% - 76px)';
+        height: 152px;
+        width: 152px;
+    }
+    to {
+        top: ~'calc(50% - 100px)';
+        left: ~'calc(33% - 100px)';
+        height: 200px;
+        width: 200px;
+    }
+}
+
 .logo {
 	border-radius: 50%;
 	border: 16px solid #00bcd4;
@@ -15,6 +30,8 @@ body {
 	top: ~'calc(50% - 100px)';
 	left: ~'calc(33% - 100px)';
 	overflow: hidden;
+
+    animation: inflate 750ms ease-out;
 
 	img {
 		border-radius: 50%;
@@ -33,10 +50,23 @@ body {
 	}
 }
 
+@keyframes slideIn {
+    from {
+        left: ~'calc(50% + 48px)';
+        opacity: 0;
+    }
+    to {
+        left: 50%;
+        opacity: 1;
+    }
+}
+
 .infos {
 	position: absolute;
 	left: 50%;
 	top: ~'calc(50% - 60px)';
+
+    animation: slideIn 750ms ease-out;
 
     text-align: left;
     font-size: 64px;
@@ -55,23 +85,36 @@ body {
 	}
 }
 
+@keyframes iconAppearance {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
+}
+
 .links {
 	position: absolute;
 	left: 50%;
 	top: ~'calc(50% + 60px)';
 	padding: 10px 0;
 
+    animation: slideIn 750ms ease-out;
+
 	.icon {
 		display: inline-block;
 		vertical-align: middle;
+
 		height: 48px;
 		width: 48px;
 		padding: 8px;
 		margin-right: 16px;
-		cursor: pointer;
 
-        transition: fill 500ms;
+		cursor: pointer;
         fill: #90a4ae;
+
+        transition: 500ms;
 
         &:hover {
             fill: #00acc1;
