@@ -8,6 +8,8 @@ function initialize() {
 			window.open('http://twitter.com/thib_thib');
 		} else if ($(event.delegateTarget).attr('goto') === 'github') {
 			window.open('https://github.com/thibthib');
+		} else if ($(event.delegateTarget).attr('goto') === 'email') {
+			window.location.href = "mailto:t.dutartre@gmail.com";
 		}
 	});
 
