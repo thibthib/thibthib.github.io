@@ -1,4 +1,6 @@
 function initialize() {
+	$('body').removeClass('preload');
+
 	$('.links svg').on('click', function(event) {
 		if ($(event.delegateTarget).attr('goto') === 'vsco') {
 			window.open('http://thibaut.vsco.co/?utm_source=user_grid&utm_medium=user_website&utm_campaign=link_to_grid');
