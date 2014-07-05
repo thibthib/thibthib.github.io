@@ -26,7 +26,6 @@ gulp.task('styles', function() {
 
 gulp.task('svg-sprites', function() {
     return gulp.src('src/images/sprites/*.svg')
-        // .pipe(svgmin())
         .pipe(svgSymbols())
         .pipe(gulp.dest('images'))
         .pipe(livereload(server))
