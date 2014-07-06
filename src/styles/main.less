@@ -92,12 +92,15 @@ body {
 	}
 }
 
-@keyframes iconAppearance {
-    from {
-        opacity: 0;
+.icon {
+    transition: 1000ms;
+
+    &.defs-not-loaded {
+        fill-opacity: 0;
     }
-    to {
-        opacity: 1;
+
+    &:not(.defs-not-loaded) {
+        fill-opacity: 1;
     }
 }
 
@@ -120,8 +123,6 @@ body {
 
 		cursor: pointer;
         fill: #90a4ae;
-
-        transition: 500ms;
 
         &:hover {
             fill: #00acc1;

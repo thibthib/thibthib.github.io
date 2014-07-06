@@ -1,7 +1,8 @@
 function initialize() {
 	$.get( 'images/svg-symbols.svg', function(svg) {
-		document.importNode(svg.documentElement,true);
+		document.importNode(svg.documentElement, true);
 		$('body').prepend(svg.documentElement);
+		$('.icon.defs-not-loaded').attr('class', 'icon');
 	});
 
 	$('body').removeClass('preload');
