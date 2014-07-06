@@ -1,14 +1,21 @@
 function initialize() {
+	$.get( 'images/svg-symbols.svg', function(svg) {
+		document.importNode(svg.documentElement,true);
+		$('body').prepend(svg.documentElement);
+	});
+
 	$('body').removeClass('preload');
 
 	$('.links svg').on('click', function(event) {
-		if ($(event.delegateTarget).attr('goto') === 'vsco') {
-			window.open('http://thibaut.vsco.co/?utm_source=user_grid&utm_medium=user_website&utm_campaign=link_to_grid');
-		} else if ($(event.delegateTarget).attr('goto') === 'twitter') {
+		var link = $(event.delegateTarget).attr('goto');
+
+		if (link === 'vsco') {
+			window.open('http://thibaut.vsco.co');
+		} else if (link === 'twitter') {
 			window.open('http://twitter.com/thib_thib');
-		} else if ($(event.delegateTarget).attr('goto') === 'github') {
+		} else if (link === 'github') {
 			window.open('https://github.com/thibthib');
-		} else if ($(event.delegateTarget).attr('goto') === 'email') {
+		} else if (link === 'email') {
 			window.location.href = "mailto:t.dutartre@gmail.com";
 		}
 	});
