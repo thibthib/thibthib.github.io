@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
 	<meta content="Flappy Bird,game,Crappy Bird,clone,javascript,html5 game,mobile,canvas,flappy bird source" name="keywords"/>
 	<meta name="description" content="Clone of Flappy bird game in javascript using canvas 2d">
-    <meta name="viewport" content="width=device-width, 
+    <meta name="viewport" content="width=device-width,
     user-scalable=no, initial-scale=1, maximum-scale=1, user-scalable=0" />
     <meta name="apple-mobile-web-app-capable" content="yes" />
     <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
@@ -14,7 +14,6 @@
         body {
             margin: 0;
             padding: 0;
-            background: #000;
         }
         canvas {
             display: block;
@@ -35,9 +34,9 @@
 		/*
 		   =================================================================
 			script: CrappyBird
-			author: Varun Pant  
+			author: Varun Pant
 			date: April 6, 2014
-			site: http://www.varunpant.com			 	 
+			site: http://www.varunpant.com
 		   =================================================================
 		*/
 
@@ -56,11 +55,11 @@
         })();
          //sounds
 
-        var soundJump = new Audio("wing.ogg");
-        var soundScore = new Audio("point.ogg");
-        var soundHit = new Audio("hit.ogg");
-        var soundDie = new Audio("die.ogg");
-        var soundSwoosh = new Audio("swooshing.ogg");
+        var soundJump = new Audio("x/wing.ogg");
+        var soundScore = new Audio("x/point.ogg");
+        var soundHit = new Audio("x/hit.ogg");
+        var soundDie = new Audio("x/die.ogg");
+        var soundSwoosh = new Audio("x/swooshing.ogg");
          //http://www.storiesinflight.com/html5/audio.html
         var channel_max = 10; // number of channels
         audiochannels = new Array();
@@ -82,12 +81,12 @@
                 }
             }
         }
-		
+
 		function getCookie(cname)
 		{
 		   var name = cname + "=";
 		   var ca = document.cookie.split(';');
-		   for(var i=0; i<ca.length; i++) 
+		   for(var i=0; i<ca.length; i++)
 		   {
 			  var c = ca[i].trim();
 			  if (c.indexOf(name)==0) return c.substring(name.length,c.length);
@@ -155,7 +154,7 @@
                 // default to 320x200
                 FB.canvas.width = FB.WIDTH;
                 FB.canvas.height = FB.HEIGHT;
-                // the canvas context allows us to 
+                // the canvas context allows us to
                 // interact with the canvas api
                 FB.ctx = FB.canvas.getContext('2d');
                 // we need to sniff out android & ios
@@ -218,7 +217,7 @@
                 // we're ready to resize
                 FB.resize();
 				FB.changeState("Splash");
-                
+
                 FB.loop();
 
             },
@@ -258,7 +257,7 @@
                     window.scrollTo(0, 1);
                 }, 1);
             },
-			            
+
             // this is where all entities will be moved
             // and checked for collisions etc
             update: function () {
@@ -270,14 +269,14 @@
             render: function () {
 
                 FB.Draw.rect(0, 0, FB.WIDTH, FB.HEIGHT, FB.gradients[FB.bg_grad]);
-				 
+
                 // cycle through all entities and render to canvas
                 for (i = 0; i < FB.entities.length; i += 1) {
                     FB.entities[i].render();
                 }
-					
+
 				FB.game.render();
-				
+
             },
 
             // the actual loop
@@ -291,7 +290,7 @@
                 FB.update();
                 FB.render();
             },
-			changeState: function(state) {    				 
+			changeState: function(state) {
 				FB.game = new window[state]();
 				FB.game.init();
 			}
@@ -316,7 +315,7 @@
                 FB.ctx.closePath();
                 FB.ctx.fill();
             },
-			Image:function(img,x,y){				
+			Image:function(img,x,y){
 				FB.ctx.drawImage(img,x,y);
 			},
             Sprite: function (img, srcX, srcY, srcW, srcH, destX, destY, destW, destH, r) {
@@ -612,9 +611,9 @@
 
          // checks if two entities are touching
         FB.Collides = function (bird, pipe) {
-		
-			if(bird.vy >=370){				  
-				 
+
+			if(bird.vy >=370){
+
 				 return true;
 			}
             if (pipe.coin && bird.vx > pipe.centerX + pipe.w / 2 - 5) {
@@ -652,12 +651,12 @@
             return (c1 || c2)
 
         };
-		
+
 		window.Splash = function(){
-			
+
 			this.banner = new Image();
 			this.banner.src = "splash.png";
-			
+
 			this.init = function(){
 				play_sound(soundSwoosh);
 				FB.distance = 0;
@@ -675,28 +674,28 @@
                 FB.entities.push(new FB.Tree(~~(Math.random() * FB.WIDTH + 50), FB.HEIGHT - 160));
                 FB.entities.push(new FB.Tree(~~(Math.random() * FB.WIDTH + 100), FB.HEIGHT - 160));
 			}
-			
+
 			this.update = function(){
 				for (i = 0; i < FB.entities.length; i += 1) {
-                    FB.entities[i].update();                    
+                    FB.entities[i].update();
                 }
 				if (FB.Input.tapped) {
 					FB.changeState('Play');
 					FB.Input.tapped = false;
 				}
 			}
-			
+
 			this.render = function(){
 				FB.Draw.Image(this.banner,66,100);
 			}
-		
+
 		}
-		
+
 		window.Play = function(){
-			
-			this.init = function(){			
-				 
-                
+
+			this.init = function(){
+
+
                 FB.entities.push(new FB.Pipe(FB.WIDTH * 2, 50));
                 FB.entities.push(new FB.Pipe(FB.WIDTH * 2 + FB.WIDTH / 2, 50));
                 FB.entities.push(new FB.Pipe(FB.WIDTH * 3, 50));
@@ -710,9 +709,9 @@
 				}
 				FB.digits = ["0"];
 			}
-			
-			this.update = function() { 
-				
+
+			this.update = function() {
+
 				FB.distance += 1;
                 var levelUp = ((FB.distance % 2048) === 0) ? true : false;
                 if (levelUp) {
@@ -739,11 +738,11 @@
 
                 // if the user has tapped the screen
                 if (FB.Input.tapped) {
-                    // keep track of taps; needed to 
+                    // keep track of taps; needed to
                     // calculate accuracy
                     FB.score.taps += 1;
 
-                    // set tapped back to false           
+                    // set tapped back to false
                     // in the next cycle
 
                     checkCollision = true;
@@ -762,20 +761,20 @@
                     }
                 }
 			}
-			
-			this.render = function() { 
-				//score				
-				var X = (FB.WIDTH/2-(FB.digits.length*14)/2);				
+
+			this.render = function() {
+				//score
+				var X = (FB.WIDTH/2-(FB.digits.length*14)/2);
 				for(var i = 0; i < FB.digits.length; i++)
 				{
 				  FB.Draw.Image(FB.fonts[Number(FB.digits[i])],X+(i*14),10);
 				}
 			}
-		
+
 		}
-		
+
 		window.GameOver = function(){
-			
+
 			this.getMedal = function()
 			{
 			   var score = FB.score.coins;
@@ -788,7 +787,7 @@
 				  medal = "gold";
 			   if(score >= 40)
 				  medal = "platinum";
-			
+
 				return medal;
 			}
 			this.getHighScore = function(){
@@ -803,13 +802,13 @@
 					return hs;
 				  }
 				  else
-				  {					 
+				  {
 					setCookie("highscore", FB.score.coins, 999);
 					return  FB.score.coins;
 				  }
 			}
 			this.init = function(){
-						
+
 			    var that = this;
 				setTimeout(function() {
 					play_sound(soundDie);
@@ -822,22 +821,22 @@
 					that.replay.src = "replay.png";
 					that.highscore = that.getHighScore() ;
 				}, 500);
-				
+
 			}
-			
-			this.update = function(){				
+
+			this.update = function(){
 				if (FB.Input.tapped) {
 					var x = FB.Input.x;
 					var y = FB.Input.y;
-					
-					 if((x >= 102.5 && x <= 102.5+115) && (y >= 260 && y <= 260+70)){       
+
+					 if((x >= 102.5 && x <= 102.5+115) && (y >= 260 && y <= 260+70)){
 						FB.changeState('Splash');
 					}
 					FB.Input.tapped = false;
 				}
 				FB.bird.update();
 			}
-			
+
 			this.render = function(){
 				if(this.banner){
 					FB.Draw.Image(this.banner,42,70);
@@ -847,7 +846,7 @@
 					FB.Draw.text(this.highscore, 220, 225, 15, 'black');
 				}
 			}
-		
+
 		}
 
         window.addEventListener('load', FB.init, false);
