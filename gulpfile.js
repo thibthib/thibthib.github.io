@@ -1,17 +1,16 @@
-var gulp = require('gulp');
-var less = require('gulp-less');
+var gulp         = require('gulp');
+var less         = require('gulp-less');
 var autoprefixer = require('gulp-autoprefixer');
-var minifycss = require('gulp-minify-css');
-var uglify = require('gulp-uglify');
-var rename = require('gulp-rename');
-var concat = require('gulp-concat');
-var notify = require('gulp-notify');
-var livereload = require('gulp-livereload');
-var lr = require('tiny-lr');
-var server = lr();
-
-var svgmin = require('gulp-svgmin');
-var svgSymbols = require('gulp-svg-symbols');
+var minifycss    = require('gulp-minify-css');
+var uglify       = require('gulp-uglify');
+var rename       = require('gulp-rename');
+var concat       = require('gulp-concat');
+var notify       = require('gulp-notify');
+var livereload   = require('gulp-livereload');
+var lr           = require('tiny-lr');
+var server       = lr();
+var svgmin       = require('gulp-svgmin');
+var svgSymbols   = require('gulp-svg-symbols');
 
 gulp.task('styles', function() {
     return gulp.src('src/styles/main.less')
@@ -59,5 +58,3 @@ gulp.task('watch', function() {
         gulp.watch('*.html', ['html']);
     });
 });
-
-gulp.task('default', ['watch']);
